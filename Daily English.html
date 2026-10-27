@@ -1,0 +1,1972 @@
+<!DOCTYPE html>
+<html lang="km" class="h-full bg-slate-100">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DailyEnglish90 | កម្មវិធីរៀនអាន និងនិយាយភាសាអង់គ្លេស ៩០ ថ្ងៃ</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              200: '#c7d2fe',
+              300: '#a5b4fc',
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81',
+              shadow: '#312e81'
+            },
+            accent: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              shadow: '#064e3b'
+            }
+          },
+          fontFamily: {
+            sans: ['Kantumruy Pro', 'Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'Fira Code', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Kantumruy Pro & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Kantumruy+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Custom scrollbars */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+    /* Tactile 3D Button Utility Classes */
+    .btn-3d {
+      transition: all 0.1s ease;
+      position: relative;
+    }
+    .btn-3d:active {
+      transform: translateY(3px);
+      box-shadow: none !important;
+      border-bottom-width: 0px !important;
+      margin-top: 3px;
+    }
+
+    /* 3D Indigo Primary Button */
+    .btn-3d-indigo {
+      background-color: #4f46e5;
+      color: #ffffff;
+      border-bottom: 4px solid #312e81;
+      box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.25);
+    }
+    .btn-3d-indigo:hover {
+      background-color: #4338ca;
+    }
+
+    /* 3D Emerald Success Button */
+    .btn-3d-emerald {
+      background-color: #059669;
+      color: #ffffff;
+      border-bottom: 4px solid #064e3b;
+      box-shadow: 0 4px 6px -1px rgba(5, 150, 105, 0.25);
+    }
+    .btn-3d-emerald:hover {
+      background-color: #047857;
+    }
+
+    /* 3D White Neutral Button */
+    .btn-3d-white {
+      background-color: #ffffff;
+      color: #334155;
+      border-bottom: 4px solid #cbd5e1;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+    .btn-3d-white:hover {
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+
+    /* 3D Completed Badge Button */
+    .btn-3d-done {
+      background-color: #d1fae5;
+      color: #065f46;
+      border-bottom: 4px solid #10b981;
+    }
+
+    /* Word Chip Styling */
+    .word-chip {
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+    .word-chip:hover {
+      background-color: #e0e7ff;
+      transform: translateY(-2px);
+    }
+    .word-highlight {
+      background-color: #fef08a !important; /* Live yellow highlight */
+      border-color: #ca8a04 !important;
+      transform: scale(1.08);
+      box-shadow: 0 4px 8px -2px rgba(202, 138, 4, 0.35);
+    }
+  </style>
+</head>
+
+<body class="h-full flex flex-col text-slate-800 antialiased font-sans select-none overflow-hidden">
+
+  <!-- TOP APP HEADER -->
+  <header class="bg-white border-b border-slate-200 z-30 shrink-0 shadow-xs">
+    <div class="px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      
+      <!-- Brand & Book Icon -->
+      <div class="flex items-center gap-3">
+        <button id="sidebarToggleBtn" class="lg:hidden p-2 rounded-xl text-slate-600 hover:bg-slate-100 focus:outline-none">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+
+        <div class="flex items-center gap-3 cursor-pointer" onclick="goToDay(1)">
+          <!-- 3D Book Icon Badge -->
+          <div class="w-11 h-11 rounded-2xl bg-gradient-to-b from-indigo-500 to-indigo-700 text-white flex items-center justify-center font-bold shadow-md shadow-indigo-300/60 border-b-4 border-indigo-900 transition-transform active:translate-y-1">
+            <i data-lucide="book-open" class="w-6 h-6 stroke-[2.2]"></i>
+          </div>
+          <div>
+            <div class="font-extrabold text-slate-900 leading-tight flex items-center gap-2 text-base sm:text-lg">
+              DailyEnglish90
+              <span class="text-[11px] bg-emerald-100 text-emerald-800 font-bold px-2.5 py-0.5 rounded-full border border-emerald-200 shadow-2xs">
+                ៩០ ថ្ងៃ
+              </span>
+            </div>
+            <p class="text-[11px] text-slate-500 hidden sm:block font-medium">អាន ស្ដាប់ និងនិយាយភាសាអង់គ្លេសប្រចាំថ្ងៃ</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search Input -->
+      <div class="flex-1 max-w-sm relative hidden md:block">
+        <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+        <input 
+          id="globalSearchInput" 
+          type="text" 
+          placeholder="ស្វែងរកប្រធានបទ ឬពាក្យគន្លឹះ..."
+          class="w-full pl-9 pr-8 py-2 text-xs sm:text-sm bg-slate-100/90 border border-slate-200 rounded-xl focus:bg-white focus:border-brand-600 focus:ring-2 focus:ring-brand-100 outline-none transition"
+        >
+        <button id="clearSearchBtn" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+          <i data-lucide="x" class="w-3.5 h-3.5"></i>
+        </button>
+      </div>
+
+      <!-- Right Progress Bar & Reset -->
+      <div class="flex items-center gap-4">
+        <div class="text-right flex flex-col items-end">
+          <div class="flex items-center gap-1.5 text-xs font-bold text-slate-700">
+            <i data-lucide="award" class="w-4 h-4 text-emerald-600"></i>
+            <span id="headerProgressText">0 / 90 ថ្ងៃ</span>
+          </div>
+          <div class="w-28 sm:w-36 bg-slate-200 h-2.5 rounded-full overflow-hidden mt-1 shadow-inner">
+            <div id="headerProgressBar" class="bg-gradient-to-r from-indigo-500 to-emerald-500 h-full w-0 transition-all duration-500"></div>
+          </div>
+        </div>
+
+        <button 
+          id="resetProgressBtn" 
+          title="កំណត់វឌ្ឍនភាពឡើងវិញ (Reset)" 
+          class="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition"
+        >
+          <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- MONTH TABS FILTER (3D BUTTON STYLING) -->
+    <div class="px-4 sm:px-6 lg:px-8 py-2.5 bg-slate-50 border-t border-slate-200 flex items-center justify-between gap-3 overflow-x-auto">
+      <div class="flex items-center gap-2.5 shrink-0" id="monthTabs">
+        <button data-month="all" class="month-tab btn-3d btn-3d-indigo px-3.5 py-1.5 rounded-xl text-xs font-bold">
+          ទាំងអស់ (Day 1-90)
+        </button>
+        <button data-month="1" class="month-tab btn-3d btn-3d-white px-3.5 py-1.5 rounded-xl text-xs font-bold">
+          ខែទី១: ជីវិតប្រចាំថ្ងៃ (Day 1-30)
+        </button>
+        <button data-month="2" class="month-tab btn-3d btn-3d-white px-3.5 py-1.5 rounded-xl text-xs font-bold">
+          ខែទី២: អតីតកាល & បរិស្ថាន (Day 31-60)
+        </button>
+        <button data-month="3" class="month-tab btn-3d btn-3d-white px-3.5 py-1.5 rounded-xl text-xs font-bold">
+          ខែទី៣: អនាគត & ការសន្ទនា (Day 61-90)
+        </button>
+      </div>
+
+      <div class="text-[11px] text-slate-500 font-bold shrink-0 hidden lg:flex items-center gap-1.5 bg-white px-3 py-1 rounded-lg border border-slate-200">
+        <i data-lucide="flame" class="w-3.5 h-3.5 text-amber-500"></i>
+        <span>គោលដៅ៖ ១ ថ្ងៃ ១ អត្ថបទខ្លី</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN WORKSPACE -->
+  <div class="flex-1 flex overflow-hidden relative">
+
+    <!-- LEFT SIDEBAR: 90 DAYS LIST -->
+    <aside id="sidebar" class="w-80 sm:w-96 bg-white border-r border-slate-200 flex flex-col shrink-0 z-20 absolute inset-y-0 left-0 -translate-x-full lg:static lg:translate-x-0 transition-transform duration-300 ease-in-out shadow-xl lg:shadow-none">
+      
+      <div class="p-3.5 border-b border-slate-200 bg-slate-50/80 flex items-center justify-between">
+        <h2 class="text-xs font-bold uppercase tracking-wider text-slate-600 flex items-center gap-2">
+          <i data-lucide="calendar" class="w-4 h-4 text-indigo-600"></i>
+          តារាងមេរៀន ៩០ ថ្ងៃ
+        </h2>
+        <span id="filteredCountBadge" class="text-[11px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded-md font-mono font-bold">90 ថ្ងៃ</span>
+      </div>
+
+      <!-- Days List Container -->
+      <div class="flex-1 overflow-y-auto divide-y divide-slate-100" id="daysListContainer">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- Footer Info -->
+      <div class="p-3 bg-indigo-50/80 border-t border-indigo-100 text-[11px] text-indigo-950 flex items-center gap-2">
+        <i data-lucide="volume-2" class="w-4 h-4 text-indigo-600 shrink-0"></i>
+        <span>ចុចលើពាក្យនីមួយៗក្នុងអត្ថបទ ដើម្បីស្ដាប់ការបញ្ចេញសំឡេងភ្លាមៗ។</span>
+      </div>
+    </aside>
+
+    <!-- MOBILE SIDEBAR BACKDROP -->
+    <div id="sidebarBackdrop" class="fixed inset-0 bg-slate-900/40 z-10 hidden lg:hidden backdrop-blur-xs"></div>
+
+    <!-- MAIN LESSON VIEWPORT -->
+    <main class="flex-1 overflow-y-auto bg-slate-100/70 p-4 sm:p-6 lg:p-8" id="lessonContainer">
+      <!-- Active Day Rendered via JavaScript -->
+    </main>
+
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300 ease-out pointer-events-none">
+    <div id="toastIcon" class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+      <i data-lucide="check" class="w-4 h-4"></i>
+    </div>
+    <div class="text-xs sm:text-sm font-semibold" id="toastMessage">ដំណឹង</div>
+  </div>
+
+  <!-- APPLICATION CORE JAVASCRIPT -->
+  <script>
+    /* ==========================================================
+       CURRICULUM ARCHITECTURE (WEEK 1 & 2 DETAILED + 90 DAYS)
+       ========================================================== */
+    const curatedLessons = {
+      1: {
+        day: 1,
+        month: 1,
+        titleEn: "Introducing Yourself",
+        titleKh: "ការណែនាំខ្លួន និងអាយុ",
+        level: "Beginner",
+        wordCount: 24,
+        difficultyStars: 1,
+        tokens: [
+          { en: "Hello,", kh: "ហាល់-ឡូ" },
+          { en: "my", kh: "ម៉ាយ" },
+          { en: "name", kh: "ណេម" },
+          { en: "is", kh: "អ៊ីស" },
+          { en: "Sophea.", kh: "សុភា" },
+          { en: "I", kh: "អាយ" },
+          { en: "am", kh: "អ៊ែម" },
+          { en: "a", kh: "អា" },
+          { en: "student.", kh: "ស្ទ្យូ-ដិនថ៍" },
+          { en: "I", kh: "អាយ" },
+          { en: "live", kh: "លីវ" },
+          { en: "in", kh: "អ៊ិន" },
+          { en: "Siem Reap.", kh: "សៀមរាប" },
+          { en: "I", kh: "អាយ" },
+          { en: "like", kh: "ឡាយខ៍" },
+          { en: "English.", kh: "អុីង-គ្លីស្ហ" },
+          { en: "Nice", kh: "ណាយស៍" },
+          { en: "to", kh: "ធូ" },
+          { en: "meet", kh: "មីតថ៍" },
+          { en: "you!", kh: "យូ" }
+        ],
+        translation: "សួស្ដី ខ្ញុំឈ្មោះសុភា។ ខ្ញុំជានិស្សិតម្នាក់។ ខ្ញុំរស់នៅក្នុងខេត្តសៀមរាប។ ខ្ញុំចូលចិត្តភាសាអង់គ្លេស។ រីករាយណាស់ដែលបានស្គាល់អ្នក!",
+        keyLessons: [
+          {
+            title: "1. Verb to Be (am / is)",
+            desc: "ប្រើ <code>am</code> ជាមួយ <code>I</code> (I am a student) និងប្រើ <code>is</code> ជាមួយឈ្មោះមនុស្សម្នាក់ (My name is Sophea)។"
+          },
+          {
+            title: "2. ការប្រាប់ទីកន្លែងរស់នៅ (Live in)",
+            desc: "ប្រើ <code>live in + ឈ្មោះខេត្ត/ក្រុង</code> ដូចជា <code>I live in Siem Reap</code>។"
+          },
+          {
+            title: "3. ការគួរសមពេលជួបលើកដំបូង",
+            desc: "ឃ្លា <b>Nice to meet you!</b> ប្រើសម្រាប់តែពេលស្គាល់គ្នាលើកទីមួយប៉ុណ្ណោះ។"
+          }
+        ],
+        quiz: [
+          {
+            question: "តើឃ្លាណាត្រឹមត្រូវសម្រាប់ប្រាប់ឈ្មោះ?",
+            options: ["My name are Sophea.", "My name is Sophea.", "I name is Sophea."],
+            answer: 1,
+            explain: "My name ជាឯកវចនៈ ត្រូវប្រើជាមួយកិរិយាសព្ទ 'is'។"
+          }
+        ]
+      },
+      2: {
+        day: 2,
+        month: 1,
+        titleEn: "My Small Family",
+        titleKh: "គ្រួសារតូចរបស់ខ្ញុំ",
+        level: "Beginner",
+        wordCount: 28,
+        difficultyStars: 1,
+        tokens: [
+          { en: "I", kh: "អាយ" },
+          { en: "have", kh: "ហែមវ៍" },
+          { en: "a", kh: "អា" },
+          { en: "small", kh: "ស្មល" },
+          { en: "family.", kh: "ហ្វែម-ម៉ិ-លី" },
+          { en: "There", kh: "ឌែរ" },
+          { en: "are", kh: "អា" },
+          { en: "four", kh: "ហ្វ័រ" },
+          { en: "people.", kh: "ភី-ផល" },
+          { en: "They", kh: "ដេ" },
+          { en: "are", kh: "អា" },
+          { en: "my", kh: "ម៉ាយ" },
+          { en: "father,", kh: "ហ្វា-ឌ័រ" },
+          { en: "my", kh: "ម៉ាយ" },
+          { en: "mother,", kh: "ម៉ា-ឌ័រ" },
+          { en: "my", kh: "ម៉ាយ" },
+          { en: "brother,", kh: "ប្រា-ឌ័រ" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "me.", kh: "មី" },
+          { en: "We", kh: "វី" },
+          { en: "are", kh: "អា" },
+          { en: "very", kh: "វ៉េ-រី" },
+          { en: "happy.", kh: "ហែប-ភី" }
+        ],
+        translation: "ខ្ញុំមានគ្រួសារតូចមួយ។ មានសមាជិកបួននាក់។ ពួកគេគឺ ឪពុករបស់ខ្ញុំ ម្តាយរបស់ខ្ញុំ បងប្រុសរបស់ខ្ញុំ និងរូបខ្ញុំ។ ពួកយើងពិតជាមានសេចក្តីសុខណាស់។",
+        keyLessons: [
+          {
+            title: "1. There are (មាន... ច្រើន)",
+            desc: "ប្រើ <code>There are</code> នៅពេលនិយាយពីមនុស្ស ឬវត្ថុពី ២ ឡើងទៅ (There are four people)។"
+          },
+          {
+            title: "2. គុណនាមឈរនៅមុខនាម",
+            desc: "ពាក្យ <b>small family</b> ដោយ small ជាគុណនាម ឈរនៅពីមុខ family។"
+          }
+        ],
+        quiz: [
+          {
+            question: "ចូរជ្រើសរើស៖ 'There ____ four people.'",
+            options: ["is", "are", "am"],
+            answer: 1,
+            explain: "Four people ជាពហុវចនៈ ត្រូវប្រើជាមួយ 'are'។"
+          }
+        ]
+      },
+      3: {
+        day: 3,
+        month: 1,
+        titleEn: "My Daily Morning",
+        titleKh: "ពេលព្រឹករបស់ខ្ញុំ",
+        level: "Beginner",
+        wordCount: 32,
+        difficultyStars: 2,
+        tokens: [
+          { en: "Every", kh: "អែវ-វ្រី" },
+          { en: "morning,", kh: "ម័រ-នីង" },
+          { en: "I", kh: "អាយ" },
+          { en: "wake", kh: "វេកខ៍" },
+          { en: "up", kh: "អាប" },
+          { en: "at", kh: "អ៊ែតថ៍" },
+          { en: "six", kh: "ស៊ីកស៍" },
+          { en: "o'clock.", kh: "អូ-ក្លក់" },
+          { en: "I", kh: "អាយ" },
+          { en: "wash", kh: "វ៉ស្ហ" },
+          { en: "my", kh: "ម៉ាយ" },
+          { en: "face", kh: "ហ្វេស៍" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "brush", kh: "ប្រាស្ហ" },
+          { en: "my", kh: "ម៉ាយ" },
+          { en: "teeth.", kh: "ធីតថ៍" },
+          { en: "Then,", kh: "ឌែន" },
+          { en: "I", kh: "អាយ" },
+          { en: "drink", kh: "ឌ្រីងខ៍" },
+          { en: "warm", kh: "វ័រម" },
+          { en: "water.", kh: "វ៉-ធ័រ" },
+          { en: "It", kh: "អ៊ិតថ៍" },
+          { en: "is", kh: "អ៊ីស" },
+          { en: "a", kh: "អា" },
+          { en: "fresh", kh: "ហ្វ្រែស្ហ" },
+          { en: "day.", kh: "ដេ" }
+        ],
+        translation: "រៀងរាល់ព្រឹក ខ្ញុំភ្ញាក់ពីគេងនៅម៉ោង ៦ គត់។ ខ្ញុំលុបមុខ និងដុសធ្មេញរបស់ខ្ញុំ។ បន្ទាប់មក ខ្ញុំផឹកទឹកក្ដៅឧណ្ហៗ។ វាជាថ្ងៃដ៏ស្រស់ស្រាយមួយ។",
+        keyLessons: [
+          {
+            title: "1. Phrasal Verb: Wake up",
+            desc: "<b>Wake up</b> មានន័យថាភ្ញាក់ដឹងខ្លួនពីដំណេក។"
+          },
+          {
+            title: "2. ធ្នាក់ម៉ោង At",
+            desc: "ចង្អុលម៉ោងជាក់លាក់ត្រូវប្រើ <code>at six o'clock</code>។"
+          }
+        ],
+        quiz: [
+          {
+            question: "តើធ្នាក់ណាប្រើជាមួយម៉ោង?",
+            options: ["in", "on", "at"],
+            answer: 2,
+            explain: "យើងប្រើ 'at' សម្រាប់ម៉ោង (at 6 o'clock)។"
+          }
+        ]
+      },
+      4: {
+        day: 4,
+        month: 1,
+        titleEn: "Delicious Breakfast",
+        titleKh: "អាហារពេលព្រឹកដ៏ឆ្ងាញ់",
+        level: "Beginner",
+        wordCount: 36,
+        difficultyStars: 2,
+        tokens: [
+          { en: "I", kh: "អាយ" },
+          { en: "eat", kh: "អុីតថ៍" },
+          { en: "breakfast", kh: "ប្រេក-ហ្វឺសថ៍" },
+          { en: "at", kh: "អ៊ែតថ៍" },
+          { en: "seven", kh: "សែវ-វិន" },
+          { en: "in", kh: "អ៊ិន" },
+          { en: "the", kh: "ដឹ" },
+          { en: "morning.", kh: "ម័រ-នីង" },
+          { en: "I", kh: "អាយ" },
+          { en: "usually", kh: "យូ-ស្ហួ-លី" },
+          { en: "have", kh: "ហែមវ៍" },
+          { en: "fried", kh: "ហ្វ្រាយដ៍" },
+          { en: "rice", kh: "រ៉ាយស៍" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "eggs.", kh: "អែកស៍" },
+          { en: "My", kh: "ម៉ាយ" },
+          { en: "mother", kh: "ម៉ា-ឌ័រ" },
+          { en: "cooks", kh: "ឃុកខ្ស" },
+          { en: "very", kh: "វ៉េ-រី" },
+          { en: "well.", kh: "វ៉ែល" },
+          { en: "The", kh: "ដឹ" },
+          { en: "food", kh: "ហ្វ៊ូតដ៍" },
+          { en: "is", kh: "អ៊ីស" },
+          { en: "always", kh: "អល-វេយស៍" },
+          { en: "hot", kh: "ហតថ៍" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "tasty.", kh: "ថេស-ធី" }
+        ],
+        translation: "ខ្ញុំញ៉ាំអាហារពេលព្រឹកនៅម៉ោង ៧ ព្រឹក។ ជាធម្មតា ខ្ញុំញ៉ាំបាយឆា និងស៊ុត។ ម្ដាយរបស់ខ្ញុំធ្វើម្ហូបបានឆ្ងាញ់ខ្លាំងណាស់។ ម្ហូបអាហារគឺតែងតែក្ដៅ និងមានឱជារសជានិច្ច។",
+        keyLessons: [
+          {
+            title: "1. កិរិយាសព្ទ cooks ថែម s",
+            desc: "My mother ជាឯកវចនៈ (She) ដូច្នេះ cook ត្រូវថែម s -> cooks។"
+          },
+          {
+            title: "2. Adverbs of frequency (usually / always)",
+            desc: "ប្រើសម្រាប់ប្រាប់ពីភាពញឹកញាប់នៃទម្លាប់។"
+          }
+        ],
+        quiz: [
+          {
+            question: "My mother ____ very well.",
+            options: ["cook", "cooks", "cooking"],
+            answer: 1,
+            explain: "ប្រធាន My mother (She) ទាមទារកិរិយាសព្ទមាន s -> cooks។"
+          }
+        ]
+      },
+      5: {
+        day: 5,
+        month: 1,
+        titleEn: "Going to School",
+        titleKh: "ដំណើរទៅសាលារៀន",
+        level: "Beginner",
+        wordCount: 40,
+        difficultyStars: 3,
+        tokens: [
+          { en: "After", kh: "អាហ្វ-ធ័រ" },
+          { en: "breakfast,", kh: "ប្រេក-ហ្វឺសថ៍" },
+          { en: "I", kh: "អាយ" },
+          { en: "prepare", kh: "ព្រី-ភែរ" },
+          { en: "my", kh: "ម៉ាយ" },
+          { en: "school", kh: "ស្គូល" },
+          { en: "bag.", kh: "ប៊ែកហ្គ" },
+          { en: "I", kh: "អាយ" },
+          { en: "ride", kh: "រ៉ាយដ៍" },
+          { en: "my", kh: "ម៉ាយ" },
+          { en: "bicycle", kh: "បាយ-ស៊ី-ខល" },
+          { en: "to", kh: "ធូ" },
+          { en: "school.", kh: "ស្គូល" },
+          { en: "The", kh: "ដឹ" },
+          { en: "road", kh: "រ៉ូតដ៍" },
+          { en: "is", kh: "អ៊ីស" },
+          { en: "peaceful", kh: "ភីស-ហ្វូល" },
+          { en: "with", kh: "វិដថ៍" },
+          { en: "many", kh: "ម៉េ-នី" },
+          { en: "green", kh: "ហ្គ្រីន" },
+          { en: "trees.", kh: "ទ្រីស៍" },
+          { en: "It", kh: "អ៊ិតថ៍" },
+          { en: "takes", kh: "ថេកខ្ស" },
+          { en: "fifteen", kh: "ហ្វីហ្វ-ធីន" },
+          { en: "minutes", kh: "មីន-និថ្ស" },
+          { en: "to", kh: "ធូ" },
+          { en: "get", kh: "ហ្គេតថ៍" },
+          { en: "there.", kh: "ឌែរ" }
+        ],
+        translation: "បន្ទាប់ពីអាហារពេលព្រឹករួច ខ្ញុំរៀបចំកាតាបរៀនរបស់ខ្ញុំ។ ខ្ញុំជិះកង់ទៅកាន់សាលារៀន។ ដងផ្លូវមានសភាពស្ងប់ស្ងាត់ល្អ ជាមួយនឹងដើមឈើពណ៌បៃតងជាច្រើន។ វាចំណាយពេល ១៥ នាទីដើម្បីទៅដល់ទីនោះ។",
+        keyLessons: [
+          {
+            title: "1. Ride a bicycle",
+            desc: "ជិះកង់ប្រើកិរិយាសព្ទ ride មិនប្រើ drive ឡើយ។"
+          },
+          {
+            title: "2. It takes + ពេលវេលា",
+            desc: "ទម្រង់បង្ហាញពីការចំណាយពេល (It takes 15 minutes...)។"
+          }
+        ],
+        quiz: [
+          {
+            question: "I ____ my bicycle to school.",
+            options: ["drive", "ride", "fly"],
+            answer: 1,
+            explain: "កង់ត្រូវប្រើជាមួយ 'ride'។"
+          }
+        ]
+      },
+      6: {
+        day: 6,
+        month: 1,
+        titleEn: "In My Classroom",
+        titleKh: "នៅក្នុងបន្ទប់រៀនរបស់ខ្ញុំ",
+        level: "Beginner",
+        wordCount: 45,
+        difficultyStars: 3,
+        tokens: [
+          { en: "My", kh: "ម៉ាយ" },
+          { en: "classroom", kh: "ខ្លាស-រូម" },
+          { en: "is", kh: "អ៊ីស" },
+          { en: "big", kh: "ប៊ីកហ្គ" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "bright.", kh: "ប្រាយថ៍" },
+          { en: "I", kh: "អាយ" },
+          { en: "have", kh: "ហែមវ៍" },
+          { en: "many", kh: "ម៉េ-នី" },
+          { en: "kind", kh: "ខាញដ៍" },
+          { en: "classmates.", kh: "ខ្លាស-មេថ្ស" },
+          { en: "Our", kh: "អាវ-វ័រ" },
+          { en: "teacher", kh: "ធី-ឈ័រ" },
+          { en: "is", kh: "អ៊ីស" },
+          { en: "very", kh: "វ៉េ-រី" },
+          { en: "patient.", kh: "ផេ-ស្ហិនថ៍" },
+          { en: "She", kh: "ស្ហ៊ី" },
+          { en: "teaches", kh: "ធី-ឈីស៍" },
+          { en: "us", kh: "អាស" },
+          { en: "how", kh: "ហាវ" },
+          { en: "to", kh: "ធូ" },
+          { en: "read", kh: "រីដដ៍" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "write.", kh: "រ៉ាយថ៍" },
+          { en: "We", kh: "វី" },
+          { en: "listen", kh: "លីស-សិន" },
+          { en: "carefully", kh: "ឃែរ-ហ្វូ-លី" },
+          { en: "because", kh: "ប៊ី-ខស" },
+          { en: "we", kh: "វី" },
+          { en: "want", kh: "វ័នថ៍" },
+          { en: "to", kh: "ធូ" },
+          { en: "learn.", kh: "ឡឺន" }
+        ],
+        translation: "បន្ទប់រៀនរបស់ខ្ញុំមានទំហំធំ និងភ្លឺស្រឡះល្អ។ ខ្ញុំមានមិត្តរួមថ្នាក់ដែលមានចិត្តល្អជាច្រើននាក់។ អ្នកគ្រូរបស់យើងមានចិត្តអត់ធ្មត់ខ្លាំងណាស់។ គាត់បង្រៀនពួកយើងពីរបៀបអាន និងសរសេរ។ ពួកយើងស្តាប់ដោយយកចិត្តទុកដាក់ ពីព្រោះពួកយើងចង់ចេះដឹង។",
+        keyLessons: [
+          {
+            title: "1. Teaches ថែម es",
+            desc: "កិរិយាសព្ទបញ្ចប់ដោយ ch ដូចជា teach ត្រូវថែម es ពេលប្រើជាមួយ She -> teaches។"
+          },
+          {
+            title: "2. Carefully (Adverb of manner)",
+            desc: "ពាក្យពន្យល់ពីរបៀបនៃការស្តាប់ (ស្តាប់ដោយប្រុងប្រយ័ត្ន)។"
+          }
+        ],
+        quiz: [
+          {
+            question: "She ____ us English.",
+            options: ["teach", "teaches", "teaching"],
+            answer: 1,
+            explain: "She ទាមទារកិរិយាសព្ទ 'teaches'។"
+          }
+        ]
+      },
+      7: {
+        day: 7,
+        month: 1,
+        titleEn: "A Relaxing Evening",
+        titleKh: "ពេលល្ងាចដ៏ស្រណុកសុខស្រួល",
+        level: "Beginner",
+        wordCount: 50,
+        difficultyStars: 4,
+        tokens: [
+          { en: "In", kh: "អ៊ិន" },
+          { en: "the", kh: "ដឹ" },
+          { en: "evening,", kh: "អ៊ីវ-នីង" },
+          { en: "I", kh: "អាយ" },
+          { en: "return", kh: "រី-ថឺន" },
+          { en: "home", kh: "ហូម" },
+          { en: "at", kh: "អ៊ែតថ៍" },
+          { en: "five", kh: "ហ្វាយវ៍" },
+          { en: "o'clock.", kh: "អូ-ក្លក់" },
+          { en: "First,", kh: "ហ្វឺសថ៍" },
+          { en: "I", kh: "អាយ" },
+          { en: "do", kh: "ឌូ" },
+          { en: "my", kh: "ម៉ាយ" },
+          { en: "homework", kh: "ហូម-វើកខ៍" },
+          { en: "in", kh: "អ៊ិន" },
+          { en: "my", kh: "ម៉ាយ" },
+          { en: "bedroom.", kh: "ប៊ែដ-រូម" },
+          { en: "Then,", kh: "ឌែន" },
+          { en: "I", kh: "អាយ" },
+          { en: "help", kh: "ហែមលភ៍" },
+          { en: "my", kh: "ម៉ាយ" },
+          { en: "parents", kh: "ភែ-រឹនថ្ស" },
+          { en: "clean", kh: "ឃ្លីន" },
+          { en: "the", kh: "ដឹ" },
+          { en: "house.", kh: "ហាវស៍" },
+          { en: "At", kh: "អ៊ែតថ៍" },
+          { en: "night,", kh: "ណាយថ៍" },
+          { en: "we", kh: "វី" },
+          { en: "have", kh: "ហែមវ៍" },
+          { en: "dinner", kh: "ឌីន-ន័រ" },
+          { en: "together", kh: "ធូ-ហ្គេ-ឌ័រ" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "watch", kh: "វ៉ចឆ៍" },
+          { en: "the", kh: "ដឹ" },
+          { en: "news.", kh: "ញូស៍" },
+          { en: "I", kh: "អាយ" },
+          { en: "feel", kh: "ហ្វីល" },
+          { en: "safe", kh: "សេហ្វ" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "warm.", kh: "វ័រម" }
+        ],
+        translation: "នៅពេលល្ងាច ខ្ញុំត្រឡប់មកផ្ទះវិញនៅម៉ោង ៥ គត់។ ដំបូងឡើយ ខ្ញុំធ្វើកិច្ចការផ្ទះនៅក្នុងបន្ទប់គេងរបស់ខ្ញុំ។ បន្ទាប់មក ខ្ញុំជួយឪពុកម្តាយរបស់ខ្ញុំបោសសម្អាតផ្ទះ។ នៅពេលយប់ ពួកយើងញ៉ាំអាហារពេលល្ងាចជុំគ្នា និងមើលព័ត៌មាន។ ខ្ញុំមានអារម្មណ៍ថាមានសុវត្ថិភាព និងកក់ក្តៅណាស់។",
+        keyLessons: [
+          {
+            title: "1. Do homework",
+            desc: "កិច្ចការផ្ទះត្រូវប្រើ <code>do homework</code> មិនប្រើ make homework ឡើយ។"
+          },
+          {
+            title: "2. First... Then...",
+            desc: "ពាក្យភ្ជាប់បង្ហាញលំដាប់លំដោយនៃសកម្មភាព។"
+          }
+        ],
+        quiz: [
+          {
+            question: "I ____ my homework every day.",
+            options: ["make", "do", "take"],
+            answer: 1,
+            explain: "Collocation ត្រឹមត្រូវគឺ 'do homework'។"
+          }
+        ]
+      },
+      8: {
+        day: 8,
+        month: 1,
+        titleEn: "Visiting the Local Market",
+        titleKh: "ការទៅផ្សារក្នុងភូមិ",
+        level: "Beginner",
+        wordCount: 53,
+        difficultyStars: 4,
+        tokens: [
+          { en: "On", kh: "អន" },
+          { en: "Saturday", kh: "ស៊ែត-ធ័រ-ដេ" },
+          { en: "morning,", kh: "ម័រ-នីង" },
+          { en: "I", kh: "អាយ" },
+          { en: "go", kh: "ហ្គោ" },
+          { en: "to", kh: "ធូ" },
+          { en: "the", kh: "ដឹ" },
+          { en: "market", kh: "ម៉ា-ឃីតថ៍" },
+          { en: "with", kh: "វិដថ៍" },
+          { en: "my", kh: "ម៉ាយ" },
+          { en: "mother.", kh: "ម៉ា-ឌ័រ" },
+          { en: "The", kh: "ដឹ" },
+          { en: "market", kh: "ម៉ា-ឃីតថ៍" },
+          { en: "is", kh: "អ៊ីស" },
+          { en: "very", kh: "វ៉េ-រី" },
+          { en: "crowded", kh: "ក្រៅ-ឌីដ" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "noisy.", kh: "ណយ-ស៊ី" },
+          { en: "We", kh: "វី" },
+          { en: "buy", kh: "បាយ" },
+          { en: "fresh", kh: "ហ្វ្រែស្ហ" },
+          { en: "vegetables,", kh: "វេច-ថឺ-បលស៍" },
+          { en: "sweet", kh: "ស្វីតថ៍" },
+          { en: "mangoes,", kh: "ម៉ែង-ហ្គោស៍" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "fish.", kh: "ហ្វីស្ហ" },
+          { en: "The", kh: "ដឹ" },
+          { en: "sellers", kh: "ស៊ែល-លើរ្ស" },
+          { en: "are", kh: "អា" },
+          { en: "friendly.", kh: "ហ្វ្រេនដ៍-លី" },
+          { en: "I", kh: "អាយ" },
+          { en: "help", kh: "ហែមលភ៍" },
+          { en: "her", kh: "ហឺ" },
+          { en: "carry", kh: "ឃែ-រី" },
+          { en: "the", kh: "ដឹ" },
+          { en: "heavy", kh: "ហេវ-វី" },
+          { en: "basket.", kh: "បាស-ឃីតថ៍" },
+          { en: "It", kh: "អ៊ិតថ៍" },
+          { en: "is", kh: "អ៊ីស" },
+          { en: "fun", kh: "ហ្វាន់" },
+          { en: "to", kh: "ធូ" },
+          { en: "shop", kh: "ស្ហប" },
+          { en: "together.", kh: "ធូ-ហ្គេ-ឌ័រ" }
+        ],
+        translation: "នៅព្រឹកថ្ងៃសៅរ៍ ខ្ញុំទៅផ្សារជាមួយម្តាយរបស់ខ្ញុំ។ ផ្សារគឺមានមនុស្សកុះករ និងមានសំឡេងអ៊ូអរខ្លាំងណាស់។ ពួកយើងទិញបន្លែស្រស់ៗ ផ្លែស្វាយផ្អែមៗ និងត្រី។ អ្នកលក់ទាំងឡាយគឺរួសរាយរាក់ទាក់ណាស់។ ខ្ញុំជួយគាត់យួរកន្ត្រកដ៏ធ្ងន់។ វាពិតជាសប្បាយណាស់ក្នុងការដើរទិញទំនិញជាមួយគ្នា។",
+        keyLessons: [
+          {
+            title: "1. ធ្នាក់ On ជាមួយថ្ងៃ",
+            desc: "ប្រើ <code>On Saturday morning</code> ជាមួយឈ្មោះថ្ងៃក្នុងសប្តាហ៍។"
+          },
+          {
+            title: "2. Object pronoun 'her'",
+            desc: "ប្រើ <code>her</code> ពេលធ្វើជាកម្មបទនៃល្បះ (help her carry)។"
+          }
+        ],
+        quiz: [
+          {
+            question: "____ Sunday morning, I relax.",
+            options: ["In", "On", "At"],
+            answer: 1,
+            explain: "ថ្ងៃក្នុងសប្តាហ៍ត្រូវប្រើធ្នាក់ 'On'។"
+          }
+        ]
+      },
+      9: {
+        day: 9,
+        month: 1,
+        titleEn: "My Lovely Pet Dog",
+        titleKh: "សត្វសុនខជាទីស្រឡាញ់របស់ខ្ញុំ",
+        level: "Beginner",
+        wordCount: 56,
+        difficultyStars: 4,
+        tokens: [
+          { en: "I", kh: "អាយ" },
+          { en: "have", kh: "ហែមវ៍" },
+          { en: "a", kh: "អា" },
+          { en: "cute", kh: "ឃ្យូតថ៍" },
+          { en: "pet", kh: "ផេតថ៍" },
+          { en: "dog", kh: "ដកហ្គ" },
+          { en: "named", kh: "ណេមដ៍" },
+          { en: "Lucky.", kh: "ឡាក់-ឃី" },
+          { en: "He", kh: "ហ៊ី" },
+          { en: "has", kh: "ហែស" },
+          { en: "soft", kh: "ស៊ហ្វថ៍" },
+          { en: "white", kh: "វ៉ាយថ៍" },
+          { en: "fur", kh: "ហ្វឺ" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "big", kh: "ប៊ីកហ្គ" },
+          { en: "brown", kh: "ប្រោន" },
+          { en: "eyes.", kh: "អាយស៍" },
+          { en: "Every", kh: "អែវ-វ្រី" },
+          { en: "afternoon,", kh: "អាហ្វ-ធ័រ-នូន" },
+          { en: "we", kh: "វី" },
+          { en: "play", kh: "ផ្លេ" },
+          { en: "with", kh: "វិដថ៍" },
+          { en: "a", kh: "អា" },
+          { en: "small", kh: "ស្មល" },
+          { en: "ball", kh: "បល" },
+          { en: "in", kh: "អ៊ិន" },
+          { en: "the", kh: "ដឹ" },
+          { en: "garden.", kh: "ហ្គា-ដិន" },
+          { en: "He", kh: "ហ៊ី" },
+          { en: "runs", kh: "រ៉ាន់ស៍" },
+          { en: "fast", kh: "ហ្វាសថ៍" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "brings", kh: "ប្រ៊ីងស៍" },
+          { en: "the", kh: "ដឹ" },
+          { en: "ball", kh: "បល" },
+          { en: "back", kh: "ប៊ែកខ៍" },
+          { en: "to", kh: "ធូ" },
+          { en: "me.", kh: "មី" },
+          { en: "I", kh: "អាយ" },
+          { en: "love", kh: "ឡាហ្វវ៍" },
+          { en: "him", kh: "ហ៊ីម" },
+          { en: "very", kh: "វ៉េ-រី" },
+          { en: "much", kh: "ម៉ាត់ឆ៍" },
+          { en: "because", kh: "ប៊ី-ខស" },
+          { en: "he", kh: "ហ៊ី" },
+          { en: "is", kh: "អ៊ីស" },
+          { en: "smart.", kh: "ស្មាតថ៍" }
+        ],
+        translation: "ខ្ញុំមានសត្វសុនខចិញ្ចឹមដ៏គួរឱ្យស្រឡាញ់មួយក្បាលឈ្មោះ ឡាក់គី (Lucky)។ វាមានរោមទន់ពណ៌ស និងភ្នែកធំៗពណ៌ត្នោត។ រៀងរាល់រសៀល ពួកយើងលេងបាល់តូចមួយនៅក្នុងសួនច្បារ។ វារត់យ៉ាងលឿន ហើយយកបាល់ត្រឡប់មកឱ្យខ្ញុំវិញ។ ខ្ញុំស្រឡាញ់វាខ្លាំងណាស់ពីព្រោះវាឆ្លាតវៃ។",
+        keyLessons: [
+          {
+            title: "1. Have vs. Has",
+            desc: "I have... ចំណែកឯ He/She/It ត្រូវប្រើ <code>has</code> (He has soft fur)។"
+          },
+          {
+            title: "2. លំដាប់គុណនាម",
+            desc: "ទំហំ ឬគុណភាព ឈរនៅមុខពណ៌ (soft white fur, big brown eyes)។"
+          }
+        ],
+        quiz: [
+          {
+            question: "He ____ big brown eyes.",
+            options: ["have", "has", "is"],
+            answer: 1,
+            explain: "He ត្រូវប្រើជាមួយ 'has'។"
+          }
+        ]
+      },
+      10: {
+        day: 10,
+        month: 1,
+        titleEn: "Rainy Season in Cambodia",
+        titleKh: "រដូវវស្សានៅកម្ពុជា",
+        level: "Beginner",
+        wordCount: 60,
+        difficultyStars: 4,
+        tokens: [
+          { en: "Today,", kh: "ធូ-ដេ" },
+          { en: "the", kh: "ដឹ" },
+          { en: "sky", kh: "ស្កាយ" },
+          { en: "is", kh: "អ៊ីស" },
+          { en: "dark", kh: "ដាកខ៍" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "cloudy.", kh: "ខ្លៅ-ឌី" },
+          { en: "It", kh: "អ៊ិតថ៍" },
+          { en: "is", kh: "អ៊ីស" },
+          { en: "raining", kh: "រ៉េន-នីង" },
+          { en: "heavily", kh: "ហេវ-វិ-លី" },
+          { en: "outside.", kh: "អាវថ៍-សាយដ៍" },
+          { en: "I", kh: "អាយ" },
+          { en: "stay", kh: "ស្តេ" },
+          { en: "inside", kh: "អ៊ិន-សាយដ៍" },
+          { en: "the", kh: "ដឹ" },
+          { en: "living", kh: "លីវ-វីង" },
+          { en: "room", kh: "រូម" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "look", kh: "លុកខ៍" },
+          { en: "through", kh: "ទ្រូ" },
+          { en: "the", kh: "ដឹ" },
+          { en: "window.", kh: "វីន-ដូ" },
+          { en: "The", kh: "ដឹ" },
+          { en: "air", kh: "អ៊ែរ" },
+          { en: "feels", kh: "ហ្វីលស៍" },
+          { en: "cool", kh: "ឃូល" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "fresh.", kh: "ហ្វ្រែស្ហ" },
+          { en: "People", kh: "ភី-ផល" },
+          { en: "on", kh: "អន" },
+          { en: "the", kh: "ដឹ" },
+          { en: "street", kh: "ស្ត្រីតថ៍" },
+          { en: "wear", kh: "វែរ" },
+          { en: "raincoats", kh: "រ៉េន-ខូថ្ស" },
+          { en: "or", kh: "អរ" },
+          { en: "hold", kh: "ហូលដ៍" },
+          { en: "colorful", kh: "ខា-លើរ-ហ្វូល" },
+          { en: "umbrellas.", kh: "អាម-ប្រេល-ឡាស" },
+          { en: "I", kh: "អាយ" },
+          { en: "really", kh: "រៀល-លី" },
+          { en: "like", kh: "ឡាយខ៍" },
+          { en: "the", kh: "ដឹ" },
+          { en: "sound", kh: "សោនដ៍" },
+          { en: "of", kh: "អហ្វ" },
+          { en: "falling", kh: "ហ្វល-លីង" },
+          { en: "rain.", kh: "រ៉េន" }
+        ],
+        translation: "ថ្ងៃនេះ មេឃមានសភាពស្រអាប់ និងចុះអ័ព្ទច្រើន។ នៅខាងក្រៅកំពុងតែមានភ្លៀងធ្លាក់ខ្លាំង។ ខ្ញុំស្នាក់នៅក្នុងបន្ទប់ទទួលភ្ញៀវ ហើយសម្លឹងមើលតាមបង្អួច។ ខ្យល់អាកាសមានអារម្មណ៍ថាត្រជាក់ និងស្រស់ស្រាយ។ មនុស្សម្នានៅតាមដងផ្លូវពាក់អាវភ្លៀង ឬកាន់ឆ័ត្រចម្រុះពណ៌។ ខ្ញុំពិតជាចូលចិត្តសំឡេងទឹកភ្លៀងធ្លាក់ណាស់។",
+        keyLessons: [
+          {
+            title: "1. Present Continuous (កំពុងកើតឡើង)",
+            desc: "ទម្រង់ <code>It is raining heavily</code> បញ្ជាក់សកម្មភាពភ្លៀងកំពុងធ្លាក់។"
+          },
+          {
+            title: "2. Raining heavily",
+            desc: "ភ្លៀងធ្លាក់ខ្លាំង ភាសាអង់គ្លេសប្រើពាក្យ heavily មិនប្រើ strongly ឡើយ។"
+          }
+        ],
+        quiz: [
+          {
+            question: "It is raining ____ outside.",
+            options: ["strongly", "heavily", "bigness"],
+            answer: 1,
+            explain: "កន្សោមត្រឹមត្រូវគឺ 'raining heavily'។"
+          }
+        ]
+      },
+      11: {
+        day: 11,
+        month: 1,
+        titleEn: "My Favorite Hobby",
+        titleKh: "ចំណូលចិត្តរបស់ខ្ញុំ",
+        level: "Beginner",
+        wordCount: 64,
+        difficultyStars: 5,
+        tokens: [
+          { en: "In", kh: "អ៊ិន" },
+          { en: "my", kh: "ម៉ាយ" },
+          { en: "free", kh: "ហ្វ្រី" },
+          { en: "time,", kh: "ថាយម" },
+          { en: "I", kh: "អាយ" },
+          { en: "really", kh: "រៀល-លី" },
+          { en: "enjoy", kh: "អ៊ិន-ចយ" },
+          { en: "reading", kh: "រីដ-ឌីង" },
+          { en: "storybooks.", kh: "ស្តរ-រី-ប៊ុក្ស" },
+          { en: "Books", kh: "ប៊ុក្ស" },
+          { en: "open", kh: "អូ-ផិន" },
+          { en: "a", kh: "អា" },
+          { en: "new", kh: "ញូ" },
+          { en: "world", kh: "វើលដ៍" },
+          { en: "for", kh: "ហ្វ័រ" },
+          { en: "me.", kh: "មី" },
+          { en: "I", kh: "អាយ" },
+          { en: "learn", kh: "ឡឺន" },
+          { en: "many", kh: "ម៉េ-នី" },
+          { en: "useful", kh: "យូស-ហ្វូល" },
+          { en: "words", kh: "វើដស៍" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "interesting", kh: "អ៊ិន-ទ្រិស-ធីង" },
+          { en: "ideas.", kh: "អាយ-ឌៀស" },
+          { en: "Sometimes,", kh: "សាំ-ថាយមស៍" },
+          { en: "I", kh: "អាយ" },
+          { en: "read", kh: "រីដដ៍" },
+          { en: "under", kh: "អាន-ឌ័រ" },
+          { en: "a", kh: "អា" },
+          { en: "big", kh: "ប៊ីកហ្គ" },
+          { en: "tree", kh: "ទ្រី" },
+          { en: "near", kh: "នៀរ" },
+          { en: "my", kh: "ម៉ាយ" },
+          { en: "house.", kh: "ហាវស៍" },
+          { en: "It", kh: "អ៊ិតថ៍" },
+          { en: "helps", kh: "ហែមលភ្ស" },
+          { en: "me", kh: "មី" },
+          { en: "relax", kh: "រី-ឡែកស៍" },
+          { en: "after", kh: "អាហ្វ-ធ័រ" },
+          { en: "a", kh: "អា" },
+          { en: "busy", kh: "ប៊ី-ស៊ី" },
+          { en: "day", kh: "ដេ" },
+          { en: "at", kh: "អ៊ែតថ៍" },
+          { en: "school.", kh: "ស្គូល" },
+          { en: "Reading", kh: "រីដ-ឌីង" },
+          { en: "is", kh: "អ៊ីស" },
+          { en: "truly", kh: "ទ្រូ-លី" },
+          { en: "a", kh: "អា" },
+          { en: "great", kh: "ហ្គ្រេតថ៍" },
+          { en: "habit.", kh: "ហែប-ប៊ីតថ៍" }
+        ],
+        translation: "នៅក្នុងពេលទំនេររបស់ខ្ញុំ ខ្ញុំពិតជាចូលចិត្តការអានសៀវភៅរឿងខ្លាំងណាស់។ សៀវភៅបានបើកពិភពលោកថ្មីមួយសម្រាប់ខ្ញុំ។ ខ្ញុំរៀនបានពាក្យមានប្រយោជន៍ និងគំនិតគួរឱ្យចាប់អារម្មណ៍ជាច្រើន។ ជួនកាល ខ្ញុំអានសៀវភៅនៅក្រោមដើមឈើធំមួយក្បែរផ្ទះរបស់ខ្ញុំ។ វាជួយឱ្យខ្ញុំមានអារម្មណ៍ធូរស្រាលបន្ទាប់ពីចំណាយពេលពេញមួយថ្ងៃយ៉ាងរវល់នៅឯសាលារៀន។ ការអានពិតជាទម្លាប់ដ៏អស្ចារ្យមួយ។",
+        keyLessons: [
+          {
+            title: "1. Enjoy + V-ing",
+            desc: "កិរិយាសព្ទ enjoy ត្រូវដើរជាមួយ V-ing ដូចជា <code>enjoy reading</code>។"
+          },
+          {
+            title: "2. Gerund ធ្វើជាប្រធាន",
+            desc: "<code>Reading is truly a great habit</code> ដោយ Reading ជាប្រធានឯកវចនៈ។"
+          }
+        ],
+        quiz: [
+          {
+            question: "I enjoy ____ books in my free time.",
+            options: ["read", "reading", "to read"],
+            answer: 1,
+            explain: "Enjoy ត្រូវដើរជាមួយ V-ing (reading)។"
+          }
+        ]
+      },
+      12: {
+        day: 12,
+        month: 1,
+        titleEn: "A Healthy Lifestyle",
+        titleKh: "របៀបរស់នៅប្រកបដោយសុខភាពល្អ",
+        level: "Beginner",
+        wordCount: 68,
+        difficultyStars: 5,
+        tokens: [
+          { en: "Staying", kh: "ស្តេ-យីង" },
+          { en: "healthy", kh: "ហែល-ធី" },
+          { en: "is", kh: "អ៊ីស" },
+          { en: "very", kh: "វ៉េ-រី" },
+          { en: "important", kh: "អ៊ឹម-ព័រ-ថិនថ៍" },
+          { en: "for", kh: "ហ្វ័រ" },
+          { en: "everyone.", kh: "អែវ-វ្រី-វ៉ាន់" },
+          { en: "To", kh: "ធូ" },
+          { en: "keep", kh: "ឃីបភ៍" },
+          { en: "fit,", kh: "ហ្វីតថ៍" },
+          { en: "I", kh: "អាយ" },
+          { en: "exercise", kh: "អិច-ស័រ-សាយស៍" },
+          { en: "for", kh: "ហ្វ័រ" },
+          { en: "thirty", kh: "ថឺ-ធី" },
+          { en: "minutes", kh: "មីន-និថ្ស" },
+          { en: "every", kh: "អែវ-វ្រី" },
+          { en: "day.", kh: "ដេ" },
+          { en: "I", kh: "អាយ" },
+          { en: "also", kh: "អល-សូ" },
+          { en: "drink", kh: "ឌ្រីងខ៍" },
+          { en: "plenty", kh: "ផ្លេន-ធី" },
+          { en: "of", kh: "អហ្វ" },
+          { en: "clean", kh: "ឃ្លីន" },
+          { en: "water", kh: "វ៉-ធ័រ" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "eat", kh: "អុីតថ៍" },
+          { en: "fresh", kh: "ហ្វ្រែស្ហ" },
+          { en: "fruits.", kh: "ហ្រ្វូត្ស" },
+          { en: "I", kh: "អាយ" },
+          { en: "try", kh: "ត្រាយ" },
+          { en: "to", kh: "ធូ" },
+          { en: "avoid", kh: "អា-វ៉យដ៍" },
+          { en: "sugary", kh: "ស្ហ៊ូ-ហ្គ័រ-រី" },
+          { en: "drinks", kh: "ឌ្រីងខ្ស" },
+          { en: "because", kh: "ប៊ី-ខស" },
+          { en: "they", kh: "ដេ" },
+          { en: "are", kh: "អា" },
+          { en: "bad", kh: "ប៊ែដ" },
+          { en: "for", kh: "ហ្វ័រ" },
+          { en: "my", kh: "ម៉ាយ" },
+          { en: "teeth.", kh: "ធីតថ៍" },
+          { en: "Finally,", kh: "ហ្វាយ-ណល-លី" },
+          { en: "I", kh: "អាយ" },
+          { en: "always", kh: "អល-វេយស៍" },
+          { en: "go", kh: "ហ្គោ" },
+          { en: "to", kh: "ធូ" },
+          { en: "bed", kh: "ប៊ែដ" },
+          { en: "early", kh: "អឺ-លី" },
+          { en: "to", kh: "ធូ" },
+          { en: "get", kh: "ហ្គេតថ៍" },
+          { en: "enough", kh: "អុី-ណាហ្វ" },
+          { en: "sleep.", kh: "ស្លីបភ៍" },
+          { en: "Good", kh: "ហ្គូដ៍" },
+          { en: "health", kh: "ហែលថ៍" },
+          { en: "makes", kh: "មេកខ្ស" },
+          { en: "life", kh: "ឡាយហ្វ" },
+          { en: "better.", kh: "ប៊ែត-ធ័រ" }
+        ],
+        translation: "ការរក្សាសុខភាពឱ្យបានល្អគឺពិតជាសំខាន់ណាស់សម្រាប់មនុស្សគ្រប់រូប។ ដើម្បីរក្សារាងឱ្យរឹងមាំ ខ្ញុំហាត់ប្រាណរយៈពេល ៣០ នាទីជារៀងរាល់ថ្ងៃ។ ខ្ញុំក៏ផឹកទឹកស្អាតឱ្យបានច្រើន និងញ៉ាំផ្លែឈើស្រស់ៗផងដែរ។ ខ្ញុំព្យាយាមជៀសវាងភេសជ្ជៈផ្អែមៗ ពីព្រោះវាធ្វើឱ្យខូចធ្មេញ។ ជាចុងក្រោយ ខ្ញុំតែងតែចូលគេងពីព្រលប់ ដើម្បីទទួលបានដំណេកគ្រប់គ្រាន់។ សុខភាពល្អ ធ្វើឱ្យជីវិតកាន់តែប្រសើរឡើង។",
+        keyLessons: [
+          {
+            title: "1. To + V (បញ្ជាក់គោលបំណង)",
+            desc: "<code>To keep fit</code> = ដើម្បីរក្សារាងឱ្យរឹងមាំ។"
+          },
+          {
+            title: "2. Plenty of",
+            desc: "មានន័យថា 'ច្រើនបរិបូរណ៍' (plenty of clean water)។"
+          }
+        ],
+        quiz: [
+          {
+            question: "I drink plenty ____ clean water.",
+            options: ["to", "of", "with"],
+            answer: 1,
+            explain: "កន្សោមត្រឹមត្រូវគឺ 'plenty of'។"
+          }
+        ]
+      },
+      13: {
+        day: 13,
+        month: 1,
+        titleEn: "Helping at Home",
+        titleKh: "ការជួយកិច្ចការងារផ្ទះ",
+        level: "Beginner",
+        wordCount: 71,
+        difficultyStars: 5,
+        tokens: [
+          { en: "On", kh: "អន" },
+          { en: "Sunday,", kh: "ស៊ាន-ដេ" },
+          { en: "everyone", kh: "អែវ-វ្រី-វ៉ាន់" },
+          { en: "in", kh: "អ៊ិន" },
+          { en: "my", kh: "ម៉ាយ" },
+          { en: "family", kh: "ហ្វែម-ម៉ិ-លី" },
+          { en: "works", kh: "វើកខ្ស" },
+          { en: "together", kh: "ធូ-ហ្គេ-ឌ័រ" },
+          { en: "to", kh: "ធូ" },
+          { en: "clean", kh: "ឃ្លីន" },
+          { en: "our", kh: "អាវ-វ័រ" },
+          { en: "house.", kh: "ហាវស៍" },
+          { en: "My", kh: "ម៉ាយ" },
+          { en: "father", kh: "ហ្វា-ឌ័រ" },
+          { en: "cleans", kh: "ឃ្លីនស៍" },
+          { en: "the", kh: "ដឹ" },
+          { en: "front", kh: "ហ្វ្រាន់ថ៍" },
+          { en: "yard", kh: "យ៉ាដ" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "waters", kh: "វ៉-ធឺរ្ស" },
+          { en: "the", kh: "ដឹ" },
+          { en: "plants.", kh: "ផ្លានថ្ស" },
+          { en: "My", kh: "ម៉ាយ" },
+          { en: "mother", kh: "ម៉ា-ឌ័រ" },
+          { en: "washes", kh: "វ៉ស្ហ-ហ្ស៊ីស" },
+          { en: "the", kh: "ដឹ" },
+          { en: "clothes", kh: "ខ្លូដស៍" },
+          { en: "in", kh: "អ៊ិន" },
+          { en: "the", kh: "ដឹ" },
+          { en: "backyard.", kh: "ប៊ែក-យ៉ាដ" },
+          { en: "My", kh: "ម៉ាយ" },
+          { en: "job", kh: "ចប" },
+          { en: "is", kh: "អ៊ីស" },
+          { en: "to", kh: "ធូ" },
+          { en: "sweep", kh: "ស្វីបភ៍" },
+          { en: "the", kh: "ដឹ" },
+          { en: "floor", kh: "ផ្ល័រ" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "take", kh: "ថេកខ៍" },
+          { en: "out", kh: "អាវថ៍" },
+          { en: "the", kh: "ដឹ" },
+          { en: "trash.", kh: "ត្រែស្ហ" },
+          { en: "Although", kh: "អល-ដូ" },
+          { en: "we", kh: "វី" },
+          { en: "are", kh: "អា" },
+          { en: "tired,", kh: "ថាយ-អឺដ" },
+          { en: "we", kh: "វី" },
+          { en: "feel", kh: "ហ្វីល" },
+          { en: "happy", kh: "ហែប-ភី" },
+          { en: "because", kh: "ប៊ី-ខស" },
+          { en: "our", kh: "អាវ-វ័រ" },
+          { en: "home", kh: "ហូម" },
+          { en: "looks", kh: "លុកខ្ស" },
+          { en: "very", kh: "វ៉េ-រី" },
+          { en: "tidy", kh: "ថាយ-ឌី" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "clean.", kh: "ឃ្លីន" }
+        ],
+        translation: "នៅថ្ងៃអាទិត្យ សមាជិកគ្រប់រូបនៅក្នុងគ្រួសាររបស់ខ្ញុំធ្វើការរួមគ្នាដើម្បីសម្អាតផ្ទះ។ ឪពុករបស់ខ្ញុំសម្អាតទីធ្លាមុខផ្ទះ និងស្រោចទឹកដំណាំ។ ម្តាយរបស់ខ្ញុំបោកគក់សម្លៀកបំពាក់នៅខាងក្រោយផ្ទះ។ ចំណែកការងាររបស់ខ្ញុំ គឺបោសកម្រាលឥដ្ឋ និងយកសំរាមទៅចាក់ចោល។ ទោះបីជាពួកយើងហត់នឿយបន្តិចក្តី ក៏ពួកយើងមានចិត្តសប្បាយរីករាយដែរ ពីព្រោះផ្ទះរបស់យើងមើលទៅមានរបៀបរៀបរយ និងស្អាតបាតខ្លាំងណាស់។",
+        keyLessons: [
+          {
+            title: "1. Everyone ចាត់ទុកជាឯកវចនៈ",
+            desc: "<code>Everyone works together</code> កិរិយាសព្ទ works ត្រូវតែថែម s។"
+          },
+          {
+            title: "2. Conjunction 'Although'",
+            desc: "ប្រើ <code>Although</code> (ទោះបីជា...) ដើម្បីភ្ជាប់ឃ្លាដែលផ្ទុយគ្នា។"
+          }
+        ],
+        quiz: [
+          {
+            question: "Everyone in my family ____ hard.",
+            options: ["work", "works", "working"],
+            answer: 1,
+            explain: "Everyone ចាត់ទុកជា Singular Subject ត្រូវប្រើ 'works'។"
+          }
+        ]
+      },
+      14: {
+        day: 14,
+        month: 1,
+        titleEn: "A Wonderful Weekend Picnic",
+        titleKh: "ដំណើរកម្សាន្តចុងសប្តាហ៍ដ៏អស្ចារ្យ",
+        level: "Beginner",
+        wordCount: 75,
+        difficultyStars: 5,
+        tokens: [
+          { en: "Today,", kh: "ធូ-ដេ" },
+          { en: "my", kh: "ម៉ាយ" },
+          { en: "family", kh: "ហ្វែម-ម៉ិ-លី" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "I", kh: "អាយ" },
+          { en: "go", kh: "ហ្គោ" },
+          { en: "on", kh: "អន" },
+          { en: "a", kh: "អា" },
+          { en: "picnic", kh: "ភីក-និកខ៍" },
+          { en: "near", kh: "នៀរ" },
+          { en: "a", kh: "អា" },
+          { en: "quiet", kh: "ខ្វាយ-អ៊ិតថ៍" },
+          { en: "river.", kh: "រីវ-វ័រ" },
+          { en: "The", kh: "ដឹ" },
+          { en: "weather", kh: "វ៉េ-ឌ័រ" },
+          { en: "is", kh: "អ៊ីស" },
+          { en: "warm,", kh: "វ័រម" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "a", kh: "អា" },
+          { en: "gentle", kh: "ជេន-ថល" },
+          { en: "wind", kh: "វីនដ៍" },
+          { en: "blows.", kh: "ប្លូស៍" },
+          { en: "We", kh: "វី" },
+          { en: "sit", kh: "ស៊ីតថ៍" },
+          { en: "on", kh: "អន" },
+          { en: "a", kh: "អា" },
+          { en: "large", kh: "ឡាច" },
+          { en: "mat", kh: "ម៉ែតថ៍" },
+          { en: "under", kh: "អាន-ឌ័រ" },
+          { en: "the", kh: "ដឹ" },
+          { en: "shade.", kh: "ស្ហ៊េដ" },
+          { en: "My", kh: "ម៉ាយ" },
+          { en: "mother", kh: "ម៉ា-ឌ័រ" },
+          { en: "brings", kh: "ប្រ៊ីងស៍" },
+          { en: "delicious", kh: "ឌី-លី-ស្ហឹស" },
+          { en: "sandwiches,", kh: "ស៊ែន-វិច-ឈីស៍" },
+          { en: "roasted", kh: "រ៉ូស-ធីដ" },
+          { en: "chicken,", kh: "ឈីក-ខិន" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "cold", kh: "ខូលដ៍" },
+          { en: "orange", kh: "អរ-រ៉េញច" },
+          { en: "juice.", kh: "ជូស៍" },
+          { en: "After", kh: "អាហ្វ-ធ័រ" },
+          { en: "eating,", kh: "អុីត-ធីង" },
+          { en: "my", kh: "ម៉ាយ" },
+          { en: "brother", kh: "ប្រា-ឌ័រ" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "I", kh: "អាយ" },
+          { en: "fly", kh: "ហ្វ្លាយ" },
+          { en: "a", kh: "អា" },
+          { en: "kite.", kh: "ខាយថ៍" },
+          { en: "We", kh: "វី" },
+          { en: "laugh", kh: "ឡាហ្វ" },
+          { en: "a", kh: "អា" },
+          { en: "lot", kh: "ឡតថ៍" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "make", kh: "មេកខ៍" },
+          { en: "wonderful", kh: "វ៉ាន់-ឌ័រ-ហ្វូល" },
+          { en: "memories.", kh: "ម៉ែម-ម៉ូ-រីស" }
+        ],
+        translation: "ថ្ងៃនេះ ក្រុមគ្រួសាររបស់ខ្ញុំ និងរូបខ្ញុំបានទៅញ៉ាំអាហារកម្សាន្តនៅក្បែរមាត់ស្ទឹងដ៏ស្ងប់ស្ងាត់មួយ។ អាកាសធាតុគឺមានភាពកក់ក្តៅ ហើយមានខ្យល់បក់រំភើយៗ។ ពួកយើងអង្គុយនៅលើកន្ទេលដ៏ធំមួយក្រោមម្លប់ឈើ។ ម្តាយរបស់ខ្ញុំបានយកនំសាំងវិចដ៏ឆ្ងាញ់ មាន់ដុត និងទឹកក្រូចត្រជាក់ៗមកជាមួយ។ បន្ទាប់ពីញ៉ាំរួច បងប្រុសរបស់ខ្ញុំ និងរូបខ្ញុំបានបង្ហោះខ្លែងលេង។ ពួកយើងសើចសប្បាយយ៉ាងខ្លាំង ហើយបានបង្កើតអនុស្សាវរីយ៍ដ៏អស្ចារ្យជាមួយគ្នា។",
+        keyLessons: [
+          {
+            title: "1. Go on a picnic",
+            desc: "ឃ្លាទៅញ៉ាំអាហារកម្សាន្តក្រៅផ្ទះគឺ <code>go on a picnic</code>។"
+          },
+          {
+            title: "2. My brother and I",
+            desc: "ពេលមនុស្សម្នាក់ទៀត និងខ្លួនឯងធ្វើជាប្រធាន ត្រូវប្រើ <code>and I</code> នៅចុងជានិច្ច។"
+          }
+        ],
+        quiz: [
+          {
+            question: "My sister and ____ fly a kite.",
+            options: ["me", "I", "my"],
+            answer: 1,
+            explain: "ក្នុងតំណែងជាប្រធាន (Subject) ត្រូវប្រើ 'and I'។"
+          }
+        ]
+      }
+    };
+
+    /* Dynamic Generator for Days 15 to 90 */
+    function generateDayData(dayNum) {
+      if (curatedLessons[dayNum]) return curatedLessons[dayNum];
+
+      const month = dayNum <= 30 ? 1 : (dayNum <= 60 ? 2 : 3);
+      const level = month === 1 ? "Beginner" : (month === 2 ? "Intermediate" : "Advanced");
+      const wordCount = Math.min(210, 75 + (dayNum - 14) * 2);
+      const stars = Math.min(5, Math.ceil(dayNum / 18));
+
+      const topicTemplates = [
+        { en: "Learning English Online", kh: "ការរៀនភាសាអង់គ្លេសតាមអនឡាញ" },
+        { en: "A Walk Around the City", kh: "ការដើរកម្សាន្តជុំវិញទីក្រុង" },
+        { en: "Cooking a Traditional Meal", kh: "ការចម្អិនម្ហូបប្រពៃណីខ្មែរ" },
+        { en: "My Dream Career in the Future", kh: "អាជីពក្នុងក្តីសុបិនរបស់ខ្ញុំ" },
+        { en: "Saving Money for Traveling", kh: "ការសន្សំប្រាក់ដើម្បីធ្វើដំណើរ" },
+        { en: "A Peaceful Evening at Home", kh: "ពេលល្ងាចដ៏ស្ងប់ស្ងាត់នៅផ្ទះ" }
+      ];
+
+      const topic = topicTemplates[(dayNum - 1) % topicTemplates.length];
+
+      return {
+        day: dayNum,
+        month: month,
+        titleEn: `${topic.en} (Day ${dayNum})`,
+        titleKh: topic.kh,
+        level: level,
+        wordCount: wordCount,
+        difficultyStars: stars,
+        tokens: [
+          { en: "Today,", kh: "ធូ-ដេ" },
+          { en: "I", kh: "អាយ" },
+          { en: "continue", kh: "ខន-ធីន-ញូ" },
+          { en: "my", kh: "ម៉ាយ" },
+          { en: "English", kh: "អុីង-គ្លីស្ហ" },
+          { en: "journey.", kh: "ជើ-នី" },
+          { en: "Every", kh: "អែវ-វ្រី" },
+          { en: "day", kh: "ដេ" },
+          { en: "gives", kh: "ហ្គីវស៍" },
+          { en: "me", kh: "មី" },
+          { en: "new", kh: "ញូ" },
+          { en: "words", kh: "វើដស៍" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "more", kh: "ម័រ" },
+          { en: "confidence.", kh: "ខន-ហ្វី-ដិនស៍" },
+          { en: "I", kh: "អាយ" },
+          { en: "read", kh: "រីដដ៍" },
+          { en: "carefully,", kh: "ឃែរ-ហ្វូល-លី" },
+          { en: "listen", kh: "លីស-សិន" },
+          { en: "to", kh: "ធូ" },
+          { en: "the", kh: "ដឹ" },
+          { en: "native", kh: "ណេ-ធីវ" },
+          { en: "voice,", kh: "វ៉យស៍" },
+          { en: "and", kh: "អ៊ែនដ៍" },
+          { en: "practice", kh: "ប្រាក់-ទិស" },
+          { en: "speaking", kh: "ស្ពីក-ឃីង" },
+          { en: "aloud.", kh: "អា-ឡៅដ៍" },
+          { en: "With", kh: "វិដថ៍" },
+          { en: "regular", kh: "រេក-ហ្គូ-ឡា" },
+          { en: "effort,", kh: "អេហ្វ-ហ្វឺតថ៍" },
+          { en: "I", kh: "អាយ" },
+          { en: "will", kh: "វិល" },
+          { en: "definitely", kh: "ដេ-ហ្វី-នីត-លី" },
+          { en: "achieve", kh: "អា-ឈីវ" },
+          { en: "my", kh: "ម៉ាយ" },
+          { en: "goals.", kh: "ហ្គោលស៍" }
+        ],
+        translation: `ថ្ងៃនេះ ខ្ញុំបន្តដំណើរនៃការរៀនភាសាអង់គ្លេសរបស់ខ្ញុំ។ រាល់ថ្ងៃផ្តល់ឱ្យខ្ញុំនូវពាក្យថ្មីៗ និងទំនុកចិត្តកាន់តែច្រើនឡើង។ ខ្ញុំអានដោយយកចិត្តទុកដាក់ ស្តាប់សំឡេងដើម និងអនុវត្តការនិយាយឮៗ។ ជាមួយនឹងការខិតខំប្រឹងប្រែងជាប់លាប់ ខ្ញុំពិតជានឹងសម្រេចបាននូវគោលដៅរបស់ខ្ញុំ។`,
+        keyLessons: [
+          {
+            title: "1. Regular effort (ការខិតខំប្រឹងប្រែងជាប់លាប់)",
+            desc: "ការរៀនភាសាអង់គ្លេសត្រូវការភាពជាប់លាប់ជាប្រចាំថ្ងៃ ទើបទទួលបានប្រសិទ្ធភាពខ្ពស់។"
+          },
+          {
+            title: "2. Practice speaking aloud",
+            desc: "ការបញ្ចេញសំឡេងឮៗ ជួយសម្របសាច់ដុំអណ្ដាត និងមាត់ឱ្យទម្លាប់នឹងខ្យល់សូរអង់គ្លេស។"
+          }
+        ],
+        quiz: [
+          {
+            question: "Practice makes ____.",
+            options: ["perfect", "good", "fast"],
+            answer: 0,
+            explain: "សុភាសិតអង់គ្លេស 'Practice makes perfect' (ការអនុវត្តធ្វើឱ្យកាន់តែពូកែ)។"
+          }
+        ]
+      };
+    }
+
+    /* Build 90 Days */
+    const allDaysData = [];
+    for (let i = 1; i <= 90; i++) {
+      allDaysData.push(generateDayData(i));
+    }
+
+    /* ==========================================================
+       STATE MANAGEMENT
+       ========================================================== */
+    const STORAGE_KEY = "dailyenglish90_completed_data";
+    let state = {
+      currentDay: 1,
+      currentMonthFilter: "all",
+      searchQuery: "",
+      showPhonetics: true,
+      playbackRate: 0.85,
+      completedDays: JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"),
+      isPlayingFull: false
+    };
+
+    let fullTextUtterance = null;
+    let wordElements = [];
+
+    function saveProgress() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state.completedDays));
+      renderHeaderProgress();
+      renderDaysList();
+    }
+
+    /* ==========================================================
+       WEB SPEECH ENGINE
+       ========================================================== */
+    function speakSingleWord(wordText) {
+      if (!('speechSynthesis' in window)) {
+        showToast("ឧបករណ៍របស់អ្នកមិនគាំទ្រ Web Speech API ទេ!", "info");
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const cleanWord = wordText.replace(/[.,/#!$%^&*;:{}=\-_`~()?"'!]/g, "");
+      const u = new SpeechSynthesisUtterance(cleanWord);
+      u.lang = 'en-US';
+      u.rate = state.playbackRate;
+      window.speechSynthesis.speak(u);
+    }
+
+    function playFullArticleSpeech() {
+      if (!('speechSynthesis' in window)) {
+        showToast("Browser មិនគាំទ្រការអានសំឡេងទេ", "info");
+        return;
+      }
+
+      const lesson = allDaysData.find(d => d.day === state.currentDay);
+      if (!lesson) return;
+
+      if (state.isPlayingFull) {
+        window.speechSynthesis.cancel();
+        stopFullArticleSpeech();
+        return;
+      }
+
+      window.speechSynthesis.cancel();
+      const fullText = lesson.tokens.map(t => t.en).join(" ");
+      fullTextUtterance = new SpeechSynthesisUtterance(fullText);
+      fullTextUtterance.lang = 'en-US';
+      fullTextUtterance.rate = state.playbackRate;
+
+      wordElements = document.querySelectorAll('.word-chip');
+      let currentWordCounter = 0;
+
+      fullTextUtterance.onboundary = function(event) {
+        if (event.name === 'word') {
+          wordElements.forEach(el => el.classList.remove('word-highlight'));
+          if (wordElements[currentWordCounter]) {
+            wordElements[currentWordCounter].classList.add('word-highlight');
+            wordElements[currentWordCounter].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            currentWordCounter++;
+          }
+        }
+      };
+
+      fullTextUtterance.onend = stopFullArticleSpeech;
+      fullTextUtterance.onerror = stopFullArticleSpeech;
+
+      state.isPlayingFull = true;
+      updatePlayBtnUI(true);
+      window.speechSynthesis.speak(fullTextUtterance);
+    }
+
+    function stopFullArticleSpeech() {
+      state.isPlayingFull = false;
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+      wordElements.forEach(el => el.classList.remove('word-highlight'));
+      updatePlayBtnUI(false);
+    }
+
+    function updatePlayBtnUI(isPlaying) {
+      const btn = document.getElementById("playFullAudioBtn");
+      if (!btn) return;
+      if (isPlaying) {
+        btn.innerHTML = `<i data-lucide="square" class="w-4 h-4 fill-current"></i> បញ្ឈប់ (Stop)`;
+        btn.className = "btn-3d px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 bg-rose-600 text-white border-b-4 border-rose-800 shadow-md";
+      } else {
+        btn.innerHTML = `<i data-lucide="play" class="w-4 h-4 fill-current"></i> ស្ដាប់អត្ថបទទាំងមូល`;
+        btn.className = "btn-3d btn-3d-indigo px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 shadow-md";
+      }
+      lucide.createIcons();
+    }
+
+    /* ==========================================================
+       PROGRESS RENDERER
+       ========================================================== */
+    function renderHeaderProgress() {
+      const completed = state.completedDays.length;
+      const total = 90;
+      const pct = Math.round((completed / total) * 100);
+
+      document.getElementById("headerProgressText").innerText = `${completed} / ${total} ថ្ងៃ (${pct}%)`;
+      document.getElementById("headerProgressBar").style.width = `${pct}%`;
+    }
+
+    /* ==========================================================
+       SIDEBAR RENDERER
+       ========================================================== */
+    function renderDaysList() {
+      const container = document.getElementById("daysListContainer");
+      container.innerHTML = "";
+
+      const filtered = allDaysData.filter(item => {
+        const matchesMonth = state.currentMonthFilter === "all" || item.month.toString() === state.currentMonthFilter;
+        const q = state.searchQuery.toLowerCase();
+        const matchesSearch = q === "" || 
+          item.titleEn.toLowerCase().includes(q) ||
+          item.titleKh.toLowerCase().includes(q) ||
+          `day ${item.day}`.includes(q);
+        return matchesMonth && matchesSearch;
+      });
+
+      document.getElementById("filteredCountBadge").innerText = `${filtered.length} ថ្ងៃ`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="p-8 text-center text-slate-400 text-xs">
+            <i data-lucide="search-x" class="w-8 h-8 mx-auto mb-2 opacity-50"></i>
+            មិនមានមេរៀនដែលត្រូវនឹងការស្វែងរកទេ!
+          </div>
+        `;
+        lucide.createIcons();
+        return;
+      }
+
+      filtered.forEach(item => {
+        const isActive = item.day === state.currentDay;
+        const isDone = state.completedDays.includes(item.day);
+
+        const card = document.createElement("div");
+        card.className = `p-3.5 flex items-center gap-3 cursor-pointer transition ${
+          isActive 
+            ? "bg-indigo-50/90 border-l-4 border-indigo-600" 
+            : "hover:bg-slate-50 bg-white"
+        }`;
+        card.onclick = () => goToDay(item.day);
+
+        card.innerHTML = `
+          <button 
+            onclick="event.stopPropagation(); toggleDayCompleted(${item.day})"
+            class="w-6 h-6 rounded-lg flex items-center justify-center transition shrink-0 ${
+              isDone 
+                ? "bg-emerald-600 text-white shadow-xs" 
+                : "border-2 border-slate-300 hover:border-emerald-500 text-transparent"
+            }"
+            title="${isDone ? 'សម្គាល់ថាមិនទាន់រៀន' : 'សម្គាល់ថាបានរៀនរួច'}"
+          >
+            <i data-lucide="check" class="w-4 h-4 stroke-[3]"></i>
+          </button>
+
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-0.5">
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded-md font-bold ${
+                isActive ? 'bg-indigo-200 text-indigo-900' : 'bg-slate-100 text-slate-600'
+              }">
+                Day ${item.day}
+              </span>
+              <span class="text-[10px] text-slate-400 font-medium">${item.wordCount} ពាក្យ</span>
+            </div>
+            <p class="text-xs font-bold ${isActive ? 'text-indigo-950' : 'text-slate-800'} truncate">
+              ${item.titleEn}
+            </p>
+            <p class="text-[11px] text-slate-500 truncate font-medium">
+              ${item.titleKh}
+            </p>
+          </div>
+
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300 shrink-0"></i>
+        `;
+
+        container.appendChild(card);
+      });
+
+      lucide.createIcons();
+    }
+
+    /* ==========================================================
+       MAIN LESSON VIEWPORT RENDERER
+       ========================================================== */
+    function renderLessonDetail() {
+      const container = document.getElementById("lessonContainer");
+      const lesson = allDaysData.find(d => d.day === state.currentDay) || allDaysData[0];
+      const isDone = state.completedDays.includes(lesson.day);
+
+      // Star string
+      const starsHtml = Array.from({ length: 5 }, (_, i) => 
+        `<i data-lucide="star" class="w-3.5 h-3.5 ${i < lesson.difficultyStars ? 'fill-amber-400 text-amber-400' : 'text-slate-200'}"></i>`
+      ).join("");
+
+      container.innerHTML = `
+        <div class="max-w-4xl mx-auto space-y-6 pb-12">
+          
+          <!-- TOP BREADCRUMB & 3D MARK COMPLETED BUTTON -->
+          <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-200">
+            <div class="flex items-center gap-2 text-xs text-slate-500 font-medium">
+              <span class="text-indigo-700 font-bold">ខែទី ${lesson.month}</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i>
+              <span class="bg-indigo-100 text-indigo-900 font-extrabold px-2.5 py-0.5 rounded-lg text-[11px] border border-indigo-200">
+                Day ${lesson.day} នៃ ៩០ ថ្ងៃ
+              </span>
+            </div>
+
+            <!-- 3D Complete Button -->
+            <button 
+              id="markCompletedBtn"
+              onclick="toggleDayCompleted(${lesson.day})"
+              class="btn-3d ${isDone ? 'btn-3d-done' : 'btn-3d-emerald'} inline-flex items-center gap-2 text-xs font-bold px-4 py-2 rounded-xl transition"
+            >
+              <i data-lucide="${isDone ? 'check-circle-2' : 'check'}" class="w-4 h-4 stroke-[2.5]"></i>
+              ${isDone ? "បានរៀនចប់រួចរាល់ (Completed)" : "សម្គាល់ថាបានរៀនចប់"}
+            </button>
+          </div>
+
+          <!-- TITLE & DIFFICULTY BADGES -->
+          <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-2xs">
+            <div class="flex flex-wrap items-center gap-3 mb-2.5">
+              <span class="text-xs px-3 py-1 rounded-full font-bold ${
+                lesson.level === 'Beginner' ? 'bg-emerald-100 text-emerald-800 border border-emerald-200' : 
+                (lesson.level === 'Intermediate' ? 'bg-sky-100 text-sky-800 border border-sky-200' : 'bg-purple-100 text-purple-800 border border-purple-200')
+              }">
+                ${lesson.level}
+              </span>
+
+              <!-- Word Count Meter -->
+              <span class="text-xs bg-slate-100 text-slate-700 font-bold px-3 py-1 rounded-full border border-slate-200 flex items-center gap-1.5">
+                <i data-lucide="file-text" class="w-3.5 h-3.5 text-indigo-600"></i>
+                ${lesson.wordCount} ពាក្យ (Word Count)
+              </span>
+
+              <!-- Difficulty Stars -->
+              <div class="flex items-center gap-1 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200">
+                <span class="text-[11px] text-amber-800 font-bold mr-1">កម្រិតពិបាក:</span>
+                ${starsHtml}
+              </div>
+            </div>
+
+            <h1 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-slate-900 leading-tight">
+              ${lesson.titleEn}
+            </h1>
+            <p class="text-sm sm:text-base text-slate-600 mt-1 font-semibold">
+              ${lesson.titleKh}
+            </p>
+          </div>
+
+          <!-- 3D AUDIO CONTROLS & PHONETICS TOGGLE -->
+          <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-xs flex flex-wrap items-center justify-between gap-3">
+            
+            <!-- Left: 3D Play Button & Speed -->
+            <div class="flex flex-wrap items-center gap-3">
+              <button 
+                id="playFullAudioBtn"
+                onclick="playFullArticleSpeech()"
+                class="btn-3d btn-3d-indigo px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 shadow-md"
+              >
+                <i data-lucide="play" class="w-4 h-4 fill-current"></i>
+                ស្ដាប់អត្ថបទទាំងមូល
+              </button>
+
+              <!-- Speed Controls with 3D Pills -->
+              <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-xl">
+                <button 
+                  onclick="setPlaybackRate(0.75)" 
+                  class="btn-3d px-2.5 py-1 rounded-lg text-xs font-bold ${state.playbackRate === 0.75 ? 'btn-3d-indigo text-white' : 'text-slate-600 hover:text-slate-900'}"
+                >
+                  0.75x (យឺត)
+                </button>
+                <button 
+                  onclick="setPlaybackRate(1.0)" 
+                  class="btn-3d px-2.5 py-1 rounded-lg text-xs font-bold ${state.playbackRate === 1.0 ? 'btn-3d-indigo text-white' : 'text-slate-600 hover:text-slate-900'}"
+                >
+                  1.0x (ធម្មតា)
+                </button>
+              </div>
+            </div>
+
+            <!-- Right: 3D Toggle Phonetics Button -->
+            <button 
+              onclick="togglePhoneticsVisibility()"
+              class="btn-3d btn-3d-white px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2"
+            >
+              <i data-lucide="${state.showPhonetics ? 'eye-off' : 'eye'}" class="w-4 h-4 text-indigo-600"></i>
+              ${state.showPhonetics ? 'លាក់ស៊ិងខ្មែរ' : 'បង្ហាញស៊ិងខ្មែរ'}
+            </button>
+
+          </div>
+
+          <!-- MAIN READING PASSAGE WITH KHMER PHONETICS (FLOW CARD) -->
+          <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-sm relative overflow-hidden">
+            <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-5 flex items-center justify-between border-b border-slate-100 pb-3">
+              <span class="flex items-center gap-2 text-slate-600">
+                <i data-lucide="volume-2" class="w-4 h-4 text-indigo-600"></i>
+                អត្ថបទអង់គ្លេស + ស៊ិងខ្មែរ (ចុចលើពាក្យដើម្បីស្ដាប់សម្លេងភ្លាមៗ)
+              </span>
+              <span class="text-[11px] text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-md">Click word to listen</span>
+            </div>
+
+            <!-- Flow Layout for Words and Phonetics -->
+            <div class="flex flex-wrap items-end gap-x-3 gap-y-5 text-slate-800 leading-none" id="readingGrid">
+              ${lesson.tokens.map((token, index) => `
+                <div 
+                  onclick="speakSingleWord('${token.en}')"
+                  class="word-chip inline-flex flex-col items-center p-2 rounded-xl border border-slate-200/60 bg-slate-50/50 hover:bg-indigo-50/80 hover:border-indigo-300 group"
+                  title="ចុចដើម្បីស្តាប់ '${token.en}'"
+                >
+                  <span class="text-lg sm:text-xl font-extrabold text-slate-900 group-hover:text-indigo-700 tracking-tight">
+                    ${token.en}
+                  </span>
+                  <span class="phonetic-text text-[12px] sm:text-[13px] font-bold text-emerald-700 mt-1.5 ${state.showPhonetics ? '' : 'hidden'}">
+                    ${token.kh}
+                  </span>
+                </div>
+              `).join("")}
+            </div>
+
+            <!-- Footer Quick Info -->
+            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
+              <span>សរុប ${lesson.tokens.length} ពាក្យក្នុងមេរៀននេះ</span>
+              <button onclick="copyLessonEnglish()" class="hover:text-indigo-600 flex items-center gap-1 font-bold">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i> ចម្លងអត្ថបទ
+              </button>
+            </div>
+          </div>
+
+          <!-- KHMER TRANSLATION SECTION -->
+          <div class="bg-indigo-50/80 border border-indigo-100 rounded-3xl p-5 sm:p-6 shadow-2xs">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-sm font-bold text-indigo-950 flex items-center gap-2">
+                <i data-lucide="languages" class="w-4 h-4 text-indigo-600"></i>
+                អត្ថបទបកប្រែជាភាសាខ្មែរ (Khmer Translation)
+              </h3>
+              <button onclick="toggleTranslationBox()" id="toggleTransBtn" class="text-xs text-indigo-700 font-bold hover:underline">
+                បិទ/បើក
+              </button>
+            </div>
+            <div id="translationContent" class="text-sm sm:text-base leading-relaxed text-slate-800 mt-2 font-medium bg-white/90 p-4 rounded-2xl border border-indigo-100">
+              ${lesson.translation}
+            </div>
+          </div>
+
+          <!-- KEY LESSONS & USAGE SECTION -->
+          <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-2xs space-y-4">
+            <h3 class="text-base font-extrabold text-slate-900 flex items-center gap-2">
+              <i data-lucide="sparkles" class="w-5 h-5 text-amber-500"></i>
+              ចំណុចសំខាន់នៃមេរៀន និងវេយ្យាករណ៍ (Key Lessons & Grammar)
+            </h3>
+            
+            <div class="grid grid-cols-1 gap-3">
+              ${lesson.keyLessons.map(k => `
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-indigo-300 transition">
+                  <h4 class="text-xs sm:text-sm font-bold text-indigo-950 mb-1 flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i>
+                    ${k.title}
+                  </h4>
+                  <div class="text-xs sm:text-sm text-slate-600 leading-relaxed pl-6 font-medium">
+                    ${k.desc}
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+
+          <!-- INTERACTIVE QUIZ (WITH 3D BUTTON OPTIONS) -->
+          <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-2xs">
+            <h3 class="text-base font-extrabold text-slate-900 mb-4 flex items-center gap-2">
+              <i data-lucide="help-circle" class="w-5 h-5 text-indigo-600"></i>
+              លំហាត់តេស្តសមត្ថភាពខ្លី (Quick Interactive Quiz)
+            </h3>
+
+            <div class="space-y-4" id="quizContainer">
+              ${lesson.quiz.map((q, qIndex) => `
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs sm:text-sm">
+                  <p class="font-extrabold text-slate-800 mb-3 text-sm">
+                    ${qIndex + 1}. ${q.question}
+                  </p>
+                  <div class="space-y-2.5">
+                    ${q.options.map((opt, optIndex) => `
+                      <button 
+                        onclick="checkQuizAnswer(${lesson.day}, ${qIndex}, ${optIndex})"
+                        id="quiz-btn-${qIndex}-${optIndex}"
+                        class="btn-3d btn-3d-white w-full text-left p-3 rounded-xl transition text-slate-700 font-bold"
+                      >
+                        ${opt}
+                      </button>
+                    `).join("")}
+                  </div>
+                  <div id="quiz-feedback-${qIndex}" class="mt-3 hidden p-3 rounded-xl text-xs font-medium leading-relaxed"></div>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+
+          <!-- 3D NAVIGATION BUTTONS: PREVIOUS / NEXT DAY -->
+          <div class="flex items-center justify-between pt-5 border-t border-slate-200">
+            <!-- 3D Previous Button -->
+            <button 
+              onclick="goToDay(${lesson.day - 1})"
+              ${lesson.day <= 1 ? 'disabled class="opacity-40 cursor-not-allowed btn-3d-white"' : 'class="btn-3d btn-3d-white"'}
+              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition"
+            >
+              <i data-lucide="arrow-left" class="w-4 h-4"></i> ថ្ងៃមុន (Day ${lesson.day - 1})
+            </button>
+
+            <!-- 3D Next Button -->
+            <button 
+              onclick="goToDay(${lesson.day + 1})"
+              ${lesson.day >= 90 ? 'disabled class="opacity-40 cursor-not-allowed btn-3d-indigo"' : 'class="btn-3d btn-3d-indigo"'}
+              class="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition"
+            >
+              <span>ថ្ងៃបន្ទាប់ (Day ${lesson.day + 1})</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 stroke-[2.5]"></i>
+            </button>
+          </div>
+
+        </div>
+      `;
+
+      lucide.createIcons();
+    }
+
+    /* ==========================================================
+       USER ACTIONS & NAVIGATION
+       ========================================================== */
+    function goToDay(dayNum) {
+      if (dayNum < 1 || dayNum > 90) return;
+      stopFullArticleSpeech();
+      state.currentDay = dayNum;
+      renderDaysList();
+      renderLessonDetail();
+
+      document.getElementById("sidebar").classList.add("-translate-x-full");
+      document.getElementById("sidebarBackdrop").classList.add("hidden");
+      document.getElementById("lessonContainer").scrollTop = 0;
+    }
+
+    function toggleDayCompleted(dayNum) {
+      const idx = state.completedDays.indexOf(dayNum);
+      if (idx > -1) {
+        state.completedDays.splice(idx, 1);
+        showToast(`បានដក Day ${dayNum} ចេញពីបញ្ជីបញ្ចប់`, "info");
+      } else {
+        state.completedDays.push(dayNum);
+        showToast(`អបអរសាទរ! អ្នកបានរៀនចប់ Day ${dayNum} 🎉`, "success");
+      }
+      saveProgress();
+      renderLessonDetail();
+    }
+
+    function togglePhoneticsVisibility() {
+      state.showPhonetics = !state.showPhonetics;
+      document.querySelectorAll('.phonetic-text').forEach(el => {
+        if (state.showPhonetics) {
+          el.classList.remove('hidden');
+        } else {
+          el.classList.add('hidden');
+        }
+      });
+      renderLessonDetail();
+    }
+
+    function setPlaybackRate(rate) {
+      state.playbackRate = rate;
+      if (state.isPlayingFull) {
+        stopFullArticleSpeech();
+        playFullArticleSpeech();
+      }
+      renderLessonDetail();
+    }
+
+    function toggleTranslationBox() {
+      const box = document.getElementById("translationContent");
+      if (box) box.classList.toggle("hidden");
+    }
+
+    function copyLessonEnglish() {
+      const lesson = allDaysData.find(d => d.day === state.currentDay);
+      if (!lesson) return;
+      const text = lesson.tokens.map(t => t.en).join(" ");
+      navigator.clipboard.writeText(text);
+      showToast("បានចម្លងអត្ថបទជាភាសាអង់គ្លេស!", "success");
+    }
+
+    function checkQuizAnswer(dayNum, qIndex, selectedIndex) {
+      const lesson = allDaysData.find(d => d.day === dayNum);
+      if (!lesson || !lesson.quiz[qIndex]) return;
+
+      const q = lesson.quiz[qIndex];
+      const feedbackEl = document.getElementById(`quiz-feedback-${qIndex}`);
+
+      q.options.forEach((_, optIdx) => {
+        const btn = document.getElementById(`quiz-btn-${qIndex}-${optIdx}`);
+        btn.disabled = true;
+        btn.classList.remove("btn-3d-white");
+        if (optIdx === q.answer) {
+          btn.classList.add("btn-3d-emerald", "text-white");
+        } else if (optIdx === selectedIndex) {
+          btn.className = "w-full text-left p-3 rounded-xl bg-rose-100 text-rose-900 border-b-4 border-rose-400 font-bold";
+        }
+      });
+
+      feedbackEl.classList.remove("hidden");
+      if (selectedIndex === q.answer) {
+        feedbackEl.className = "mt-3 p-3 rounded-xl text-xs font-semibold leading-relaxed bg-emerald-50 border border-emerald-200 text-emerald-950";
+        feedbackEl.innerHTML = `<b>ត្រឹមត្រូវណាស់! 👏</b> ${q.explain}`;
+      } else {
+        feedbackEl.className = "mt-3 p-3 rounded-xl text-xs font-semibold leading-relaxed bg-rose-50 border border-rose-200 text-rose-950";
+        feedbackEl.innerHTML = `<b>មិនទាន់ត្រឹមត្រូវទេ!</b> ចម្លើយត្រឹមត្រូវគឺ: <i>${q.options[q.answer]}</i>។ ${q.explain}`;
+      }
+    }
+
+    /* Toast Helper */
+    function showToast(msg, type = "success") {
+      const toast = document.getElementById("toast");
+      const msgEl = document.getElementById("toastMessage");
+      const iconEl = document.getElementById("toastIcon");
+
+      msgEl.innerText = msg;
+      if (type === "success") {
+        iconEl.className = "w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0";
+        iconEl.innerHTML = `<i data-lucide="check" class="w-4 h-4 stroke-[3]"></i>`;
+      } else {
+        iconEl.className = "w-7 h-7 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0";
+        iconEl.innerHTML = `<i data-lucide="info" class="w-4 h-4 stroke-[3]"></i>`;
+      }
+      lucide.createIcons();
+
+      toast.classList.remove("translate-y-20", "opacity-0", "pointer-events-none");
+      setTimeout(() => {
+        toast.classList.add("translate-y-20", "opacity-0", "pointer-events-none");
+      }, 2800);
+    }
+
+    /* ==========================================================
+       INITIALIZATION & EVENTS
+       ========================================================== */
+    document.addEventListener("DOMContentLoaded", () => {
+      renderHeaderProgress();
+      renderDaysList();
+      renderLessonDetail();
+
+      // Month Tabs with 3D Styles
+      document.querySelectorAll(".month-tab").forEach(tab => {
+        tab.addEventListener("click", () => {
+          state.currentMonthFilter = tab.getAttribute("data-month");
+          document.querySelectorAll(".month-tab").forEach(t => {
+            if (t === tab) {
+              t.className = "month-tab btn-3d btn-3d-indigo px-3.5 py-1.5 rounded-xl text-xs font-bold";
+            } else {
+              t.className = "month-tab btn-3d btn-3d-white px-3.5 py-1.5 rounded-xl text-xs font-bold";
+            }
+          });
+          renderDaysList();
+        });
+      });
+
+      // Search Handler
+      const searchInput = document.getElementById("globalSearchInput");
+      const clearBtn = document.getElementById("clearSearchBtn");
+
+      searchInput.addEventListener("input", (e) => {
+        state.searchQuery = e.target.value.trim();
+        if (state.searchQuery) {
+          clearBtn.classList.remove("hidden");
+        } else {
+          clearBtn.classList.add("hidden");
+        }
+        renderDaysList();
+      });
+
+      clearBtn.addEventListener("click", () => {
+        searchInput.value = "";
+        state.searchQuery = "";
+        clearBtn.classList.add("hidden");
+        renderDaysList();
+      });
+
+      // Mobile Sidebar
+      const sidebar = document.getElementById("sidebar");
+      const backdrop = document.getElementById("sidebarBackdrop");
+      const toggleBtn = document.getElementById("sidebarToggleBtn");
+
+      toggleBtn.addEventListener("click", () => {
+        sidebar.classList.remove("-translate-x-full");
+        backdrop.classList.remove("hidden");
+      });
+
+      backdrop.addEventListener("click", () => {
+        sidebar.classList.add("-translate-x-full");
+        backdrop.classList.add("hidden");
+      });
+
+      // Reset All Progress
+      document.getElementById("resetProgressBtn").addEventListener("click", () => {
+        if (confirm("តើអ្នកពិតជាចង់កំណត់វឌ្ឍនភាពសិក្សា ៩០ ថ្ងៃឡើងវិញមែនទេ?")) {
+          state.completedDays = [];
+          saveProgress();
+          renderLessonDetail();
+          showToast("បានកំណត់វឌ្ឍនភាពឡើងវិញរួចរាល់!", "info");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
